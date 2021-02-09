@@ -51,8 +51,8 @@ public class EAN8
 
 	public Bitmap CreateBarcodeBitmap(int width, int height)
     {
-		width = width - (width % 56);
-		int onedigitwidth = width / 8;
+		width = width - (width % 67);
+		int onedigitwidth = (width / 67) * 7;
 		Bitmap toReturn = new Bitmap(width, height);
 		Bitmap[] barcodeView = new Bitmap[8];
 		Graphics grBarcodeView = Graphics.FromImage(toReturn);
@@ -75,14 +75,35 @@ public class EAN8
 		barcodeView[6] = returnRightBarDigit(barcode[6], barcodeView[6].Width, barcodeView[6].Height);
 		barcodeView[7] = returnRightBarDigit(barcode[7], barcodeView[7].Width, barcodeView[7].Height);
 
-		grBarcodeView.DrawImage(barcodeView[0], 0, 0);
-		grBarcodeView.DrawImage(barcodeView[1], (width / 8) * 1, 0);
-		grBarcodeView.DrawImage(barcodeView[2], (width / 8) * 2, 0);
-		grBarcodeView.DrawImage(barcodeView[3], (width / 8) * 3, 0);
-		grBarcodeView.DrawImage(barcodeView[4], (width / 8) * 4, 0);
-		grBarcodeView.DrawImage(barcodeView[5], (width / 8) * 5, 0);
-		grBarcodeView.DrawImage(barcodeView[6], (width / 8) * 6, 0);
-		grBarcodeView.DrawImage(barcodeView[7], (width / 8) * 7, 0);
+
+		//Заполнение начального сектора
+		grBarcodeView.FillRectangle(Brushes.Black, 0, 0, width/67, height);
+		grBarcodeView.FillRectangle(Brushes.White, width / 67, 0, width / 67, height);
+		grBarcodeView.FillRectangle(Brushes.Black, (width / 67) * 2, 0, width / 67, height);
+
+		//Заполнение левой части штрих-кода
+		grBarcodeView.DrawImage(barcodeView[0], (width / 67) * 3, 0);
+		grBarcodeView.DrawImage(barcodeView[1], (onedigitwidth + (width / 67) * 3), 0);
+		grBarcodeView.DrawImage(barcodeView[2], (onedigitwidth * 2 + (width / 67) * 3), 0);
+		grBarcodeView.DrawImage(barcodeView[3], (onedigitwidth * 3 + (width / 67) * 3), 0);
+
+		//Заполнение разделителя
+		grBarcodeView.FillRectangle(Brushes.White, (onedigitwidth * 4 + (width / 67) * 3), 0, width / 67, height);
+		grBarcodeView.FillRectangle(Brushes.Black, (onedigitwidth * 4 + (width / 67) * 4), 0, width / 67, height);
+		grBarcodeView.FillRectangle(Brushes.White, (onedigitwidth * 4 + (width / 67) * 5), 0, width / 67, height);
+		grBarcodeView.FillRectangle(Brushes.Black, (onedigitwidth * 4 + (width / 67) * 6), 0, width / 67, height);
+		grBarcodeView.FillRectangle(Brushes.White, (onedigitwidth * 4 + (width / 67) * 7), 0, width / 67, height);
+
+		//Заполнение правой части штрих-кода
+		grBarcodeView.DrawImage(barcodeView[4], (onedigitwidth * 4 + (width / 67) * 8), 0);
+		grBarcodeView.DrawImage(barcodeView[5], (onedigitwidth * 5 + (width / 67) * 8), 0);
+		grBarcodeView.DrawImage(barcodeView[6], (onedigitwidth * 6 + (width / 67) * 8), 0);
+		grBarcodeView.DrawImage(barcodeView[7], (onedigitwidth * 7 + (width / 67) * 8), 0);
+
+		//Заполнение конечного сектора
+		grBarcodeView.FillRectangle(Brushes.Black, (onedigitwidth * 8 + (width / 67) * 8), 0, width / 67, height);
+		grBarcodeView.FillRectangle(Brushes.White, (onedigitwidth * 8 + (width / 67) * 9), 0, width / 67, height);
+		grBarcodeView.FillRectangle(Brushes.Black, (onedigitwidth * 8 + (width / 67) * 10), 0, width / 67, height);
 
 		return toReturn;
     }
