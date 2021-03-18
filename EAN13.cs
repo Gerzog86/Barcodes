@@ -32,6 +32,7 @@ public class EAN13
 					BarCode[4] = new LDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new LDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new LDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 1:
                 {
@@ -41,6 +42,7 @@ public class EAN13
 					BarCode[4] = new LDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new GDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new GDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 2:
                 {
@@ -50,6 +52,7 @@ public class EAN13
 					BarCode[4] = new GDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new LDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new GDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 3:
                 {
@@ -59,6 +62,7 @@ public class EAN13
 					BarCode[4] = new GDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new GDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new LDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 4:
 				{
@@ -68,6 +72,7 @@ public class EAN13
 					BarCode[4] = new LDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new GDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new GDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 5:
                 {
@@ -77,6 +82,7 @@ public class EAN13
 					BarCode[4] = new LDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new LDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new GDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 6:
                 {
@@ -86,6 +92,7 @@ public class EAN13
 					BarCode[4] = new GDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new LDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new LDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 7:
                 {
@@ -95,6 +102,7 @@ public class EAN13
 					BarCode[4] = new GDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new LDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new GDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 8:
                 {
@@ -104,6 +112,7 @@ public class EAN13
 					BarCode[4] = new GDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new GDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new LDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 			case 9:
                 {
@@ -113,6 +122,7 @@ public class EAN13
 					BarCode[4] = new LDigits((sbyte)barcode[4], onedigitwidth, height);
 					BarCode[5] = new GDigits((sbyte)barcode[5], onedigitwidth, height);
 					BarCode[6] = new LDigits((sbyte)barcode[6], onedigitwidth, height);
+					break;
 				}
 		}
 		for (int i = 7; i <= 12; i++)
